@@ -1,4 +1,4 @@
-package com.example.mappproject
+ package com.example.mappproject
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,6 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.mappproject.ui.theme.MappProjectTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,30 +20,26 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MappProjectTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+
+
+                    }
                 }
+            val navigationController = rememberNavController()
+            NavHost(
+                navController = navigationController,
+                startDestination = Routes.Pantalla1.route
+            ) {
+                composable(Routes.Pantalla1.route) {
+                    MapScreen(navigationController)
+                }
+
             }
+
+        }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MappProjectTheme {
-        Greeting("Android")
-    }
-}
