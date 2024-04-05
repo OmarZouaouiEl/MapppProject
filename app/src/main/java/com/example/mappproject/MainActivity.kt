@@ -31,13 +31,13 @@ class MainActivity : ComponentActivity() {
             val navigationController = rememberNavController()
             NavHost(
                 navController = navigationController,
-                startDestination = Routes.Pantalla1.route
+                startDestination = Routes.LaunchScreen.route
             ) {
-                composable(Routes.Pantalla1.route) {
-                    MapScreen(navigationController)
-                }
-
+                composable(Routes.LaunchScreen.route) { Routes.(navigationController) }
+                composable(Routes.LoginScreen.route) {Routes.LoginScreen }
             }
+
+        }
 
         }
         }

@@ -1,5 +1,7 @@
 sealed class Routes(val route: String) {
-    object Pantalla1:Routes("MapScreen")
-    object Pantalla2:Routes("pantalla2")
-    object Pantalla3:Routes("pantalla3")
+    object LaunchScreen:Routes("LaunchScreen")
+    object LoginScreen:Routes("LoginScreen")
+    object MapScreen:Routes("MapScreen")
+    object AddMarkerScreen:Routes("AddMarkerScreen")
+    object MarkerScreenList:Routes("MarkerScreenList")
 }

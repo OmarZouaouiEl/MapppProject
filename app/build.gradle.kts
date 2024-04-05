@@ -56,6 +56,8 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0-alpha03")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.compose.runtime:runtime-livedata:1.6.2")
+    implementation ("com.firebaseui:firebase-ui-auth:7.2.0")
+
 
 
     // = = = = = = = = = = = GUGULMAP IMPLEMENTATIONS = = = = = = = = = = =
