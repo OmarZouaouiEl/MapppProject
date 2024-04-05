@@ -1,4 +1,4 @@
- package com.example.mappproject
+package com.example.mappproject
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -26,20 +26,20 @@ class MainActivity : ComponentActivity() {
                 ) {
 
 
-                    }
                 }
+            }
             val navigationController = rememberNavController()
             NavHost(
                 navController = navigationController,
                 startDestination = Routes.LaunchScreen.route
             ) {
-                composable(Routes.LaunchScreen.route) { Routes.(navigationController) }
-                composable(Routes.LoginScreen.route) {Routes.LoginScreen }
+                composable(Routes.LaunchScreen.route) { Routes.MapScreen }
+                composable(Routes.LoginScreen.route) { Routes.LoginScreen }
             }
 
         }
 
-        }
-        }
     }
+}
+
 

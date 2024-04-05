@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id("com.google.gms.google-services")
 }
 
 
@@ -57,7 +58,9 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.compose.runtime:runtime-livedata:1.6.2")
     implementation ("com.firebaseui:firebase-ui-auth:7.2.0")
-
+    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation ("com.firebaseui:firebase-ui-auth:7.2.0")
 
 
     // = = = = = = = = = = = GUGULMAP IMPLEMENTATIONS = = = = = = = = = = =
