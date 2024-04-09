@@ -1,15 +1,13 @@
 package com.example.mappproject
 
+import SplashScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -33,8 +31,9 @@ class MainActivity : ComponentActivity() {
                 navController = navigationController,
                 startDestination = Routes.LaunchScreen.route
             ) {
-                composable(Routes.LaunchScreen.route) { Routes.MapScreen }
-                composable(Routes.LoginScreen.route) { Routes.LoginScreen }
+                composable(Routes.LaunchScreen.route) { SplashScreen(navigationController) }
+                composable(Routes.LoginScreen.route) { LoginScreen(navigationController) }
+                composable(Routes.MapScreen.route) { MapScreen(navigationController) }
             }
 
         }
