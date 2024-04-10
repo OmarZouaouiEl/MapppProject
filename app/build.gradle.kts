@@ -54,6 +54,8 @@ android {
 }
 dependencies {
 
+
+    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0-alpha03")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.compose.runtime:runtime-livedata:1.6.2")
@@ -61,7 +63,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation ("com.firebaseui:firebase-ui-auth:7.2.0")
-
+    implementation("com.google.firebase:firebase-analytics")
 
     // = = = = = = = = = = = GUGULMAP IMPLEMENTATIONS = = = = = = = = = = =
     implementation("com.google.maps.android:maps-compose:2.11.4")
