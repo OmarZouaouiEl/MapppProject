@@ -1,31 +1,91 @@
-package com.example.mappproject
-
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
-import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.LatLng
-import com.google.maps.android.compose.GoogleMap
-import com.google.maps.android.compose.rememberCameraPositionState
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 
 @Composable
 fun MapScreen(navController: NavController) {
+    var mapa: GoogleMap? by remember { mutableStateOf(null) }
+    var mapView: MapView? by remember { mutableStateOf(null) }
+    var marker: Marker? by remember { mutableStateOf(null) }
+
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
+        modifier = Modifier.fillMaxSize()
     ) {
-        val itb = LatLng(41.4534265, 2.1837151)
-        val cameraPositionState = rememberCameraPositionState {
-            position = CameraPosition.fromLatLngZoom(itb, 10f)
+        // MapView para mostrar el mapa
+        Box(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxSize()
+        ) {
+            MapViewContainer(mapView) { googleMap ->
+                mapa = googleMap
+            }
         }
-        GoogleMap(
-            modifier = Modifier.fillMaxSize(),
-            cameraPositionState = cameraPositionState
-        )
+
+        Surface(
+            modifier = Modifier
+                .size(64.dp)
+                .clip(CircleShape)
+                .align(Alignment.CenterHorizontally),
+            color = MaterialTheme.colors.secondary,
+            contentColor = MaterialTheme.colors.onSecondary,
+            elevation = 4.dp
+        ) {
+            Button(
+                onClick = {
+                    val currentMap = mapa
+                    if (currentMap != null) {
+                        val currentLatLng = currentMap.cameraPosition.target
+                        marker?.remove() // Eliminar marcador anterior si existe
+                        marker = currentMap.addMarker(
+                            MarkerOptions()
+                                .position(LatLng(currentLatLng.latitude, currentLatLng.longitude))
+                                .title("Nuevo marcador")
+                        )
+                    }
+                },
+                modifier = Modifier.fillMaxSize(),
+                shape = CircleShape
+            ) {
+                Text(text = "+", modifier = Modifier.padding(8.dp))
+            }
+        }
+    }
+}
+
+@Composable
+fun MapViewContainer(
+    mapView: MapView?,
+    onMapReady: (GoogleMap?) -> Unit
+) {
+    AndroidView(
+        factory = { context ->
+            mapView ?: MapView(context).also { map ->
+                map.getMapAsync { googleMap ->
+                    onMapReady(googleMap)
+                }
+            }
+        },
+        modifier = Modifier.fillMaxSize()
+    ) { mapView ->
+        if (mapView != null && mapView.parent == null) {
+            mapView.onCreate(null)
+            mapView.onResume()
+        }
     }
 }

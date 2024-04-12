@@ -49,11 +49,14 @@ fun MarkerListScreen(navController: NavController) {
         }
     }
 }
-
+@Composable
+fun selectImage(){
 // Actividad de resultado para seleccionar una imagen
-val selectImage = rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()) { uri ->
-    // Actualizar la URI de la imagen seleccionada
-    uri?.let {
-        // Aquí podrías guardar la imagen en Firebase Storage y obtener su URL
-    }
+    val selectImage =
+        rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()) { uri ->
+            // Actualizar la URI de la imagen seleccionada
+            uri?.let {
+                // Aquí podrías guardar la imagen en Firebase Storage y obtener su URL
+            }
+        }
 }

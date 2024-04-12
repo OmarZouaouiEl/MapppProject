@@ -67,8 +67,8 @@ fun login(username: String?, password: String?) {
 
     @Composable
     fun LoginScreen(navController: NavController) {
-        var username by remember { mutableStateOf("omar") }
-        var password by remember { mutableStateOf("omar") }
+        var username by remember { mutableStateOf("omar.omar@gmail.com") }
+        var password by remember { mutableStateOf("omaromar") }
         val auth = FirebaseAuth.getInstance()
 
         Box(

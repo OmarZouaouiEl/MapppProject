@@ -1,5 +1,7 @@
 package com.example.mappproject
-
+/*
+ /*
+ */
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -43,7 +45,7 @@ fun AddMarkerScreen(navController: NavController) {
         Button(
             onClick = {
                 // Lanzar la actividad para seleccionar imagen
-                selectImage.launch("image/*")
+                selectImage().launch("image/*")
             },
             modifier = Modifier.padding(vertical = 8.dp)
         ) {
@@ -52,7 +54,7 @@ fun AddMarkerScreen(navController: NavController) {
         // Mostrar la imagen seleccionada
         markerImageUri?.let { uri ->
             Image(
-                painter = painterResource(id = R.drawable.ic_baseline_image_24),
+                painter = painterResource(id = R.drawable.marker),
                 contentDescription = "Imagen seleccionada",
                 modifier = Modifier
                     .size(100.dp)
@@ -85,3 +87,6 @@ fun AddMarkerScreen(navController: NavController) {
         }
     }
 }
+
+
+ */

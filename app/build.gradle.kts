@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     id("com.google.gms.google-services")
 }
 
@@ -116,8 +115,10 @@ dependencies {
 
 secrets {
     propertiesFileName = "secrets.properties"
-    defaultPropertiesFileName = "local.properties"
+    defaultPropertiesFileName = "local.defaults.properties"
     ignoreList.add("keyToIgnore") // Ignore the key "keyToIgnore"
     ignoreList.add("sdk.*") // Ignore all keys matching the regexp "sdk.*"
 
 }
+
+

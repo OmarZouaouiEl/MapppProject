@@ -1,5 +1,6 @@
 package com.example.mappproject
 
+import MapScreen
 import SplashScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
